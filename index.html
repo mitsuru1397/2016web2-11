@@ -64,3 +64,22 @@
               td2.innerHTML = storage.getItem(_key);
              }
             }
+
+       //sessionStorageから削除
+       function removeStorage(){
+        var key = document.getElementById("textkey").value;
+        storage.removeItem(key);
+        key = "";
+        viewStorage();
+       }
+       
+       //sessionStorageからすべて削除
+       function removeallStorage() {
+        storage.clear();
+        viewStorage();
+       }
+      }
+  </script>
+  
+</body>
+</html>
