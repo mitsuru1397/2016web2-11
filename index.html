@@ -80,6 +80,30 @@
        }
       }
   </script>
-  
+  <section id="file">
+   <h3>ドラッグアンドドロップでファイルを取得します。</h3>
+   <div id="drop" style="width:700px; height:150@x; padding:10px; border:3px solid"
+        ondragover="onDragOver(event)" ></div>
+   <p>ファイルプロパティ表示</p>
+   <div id="info" ></div> //情報の表示
+   <div id="disp" ></div> //内容の表示
+  </section>
+  if(!window.File) {
+   window.alert("本ブラウザではFile APIが使えません");
+  } else {
+    // File APIが実装されている場合には、dropイベントを登録
+   document.getElementById("drop").addEventListener("drop", onDrop, false);
+  }
+  //Drop領域にどろっぷした際のファイルのプロパティ情報の読み取り処理
+  function onDrop(event){
+    var files = event.dataTransfer.files;
+    var info = document.getElementById("indo");
+    var disp = document.getElementById("disp");
+    disp.innerHTML = "";
+    
+  //ファイルの配列から１つずつファイルを選択
+  for(ver i = 0; i< files.length; i++){
+    var f = files[i];
+    info.innerHTML += "ファイル名 :" + f.name + "ファイル型:" + f.type + "ファイルサイズ:" + f.size / 1000 + "KB" + "<br />";
 </body>
 </html>
